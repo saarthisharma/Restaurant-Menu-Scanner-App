@@ -4,6 +4,7 @@ const userValidation = (body) =>{
         email: Joi.string().email().required(),
         password: Joi.string().regex(new RegExp("[a-zA-Z0-9]{8,15}")).required(),
         confirmPassword:Joi.ref("password")
+        // confirmPassword: Joi.any().valid(Joi.ref('password')).required()
     });
     let error = false;
     let message = '';

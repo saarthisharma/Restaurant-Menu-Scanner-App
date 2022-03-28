@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const categoriesSchema = new mongoose.Schema({
     restaurantId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: "Restaurant"
+        ref: "restaurant"
     },
     name: {
         type: String,
@@ -13,4 +13,4 @@ const categoriesSchema = new mongoose.Schema({
         required: true
     }
 })
-module.exports = new mongoose.model("Category" , categoriesSchema)
+module.exports = new mongoose.model("category" , categoriesSchema)
