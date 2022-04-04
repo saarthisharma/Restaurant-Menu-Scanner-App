@@ -1,9 +1,9 @@
+// email validation for reset password
+
 const Joi = require("joi")
-const userValidation = (body) =>{
+const emailValidation = (body) =>{
     const Schema = Joi.object({
-        email: Joi.string().email().required(),
-        password: Joi.string().regex(new RegExp("[a-zA-Z0-9]{8,15}")).required(),
-        confirmPassword:Joi.ref("password")
+        email: Joi.string().email().required()
     });
     let error = false;
     let message = '';
@@ -18,4 +18,4 @@ const userValidation = (body) =>{
     
     return {error: error, message: message};
 }
-module.exports={userValidation}
+module.exports={emailValidation}

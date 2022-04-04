@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8
     },
+    resetPasswordToken: {
+        type:String,
+        required:true
+    },
+    // userType : 1 for admin user , 2 for other users
     userType: {
         type: Number,
         default: 2 

@@ -3,6 +3,7 @@ const app = express()
 const path = require("path")
 const dotenv = require("dotenv")
 dotenv.config({path : ".env"})
+global.__basedir = __dirname;
 const PORT = process.env.PORT || 8080
 const connectDB = require("./config/dbConnection");
 connectDB();

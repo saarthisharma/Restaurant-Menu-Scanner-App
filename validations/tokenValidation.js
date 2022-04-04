@@ -1,13 +1,15 @@
-const Joi = require("joi")
-const userValidation = (body) =>{
+const Joi = require("joi");
+
+const tokenValidation = (body) => {
+    console.log('body :', body);
     const Schema = Joi.object({
-        email: Joi.string().email().required(),
-        password: Joi.string().regex(new RegExp("[a-zA-Z0-9]{8,15}")).required(),
-        confirmPassword:Joi.ref("password")
+        token: Joi.string().required(),
     });
+
     let error = false;
     let message = '';
     let validate = Schema.validate(body);
+    console.log('validate :', validate);
     
     if(validate.error){
         message= validate.error.details[0].message;
@@ -17,5 +19,7 @@ const userValidation = (body) =>{
     }
     
     return {error: error, message: message};
-}
-module.exports={userValidation}
+};
+
+module.exports = {tokenValidation}
+// exports.tokenValidation = tokenValidation;
