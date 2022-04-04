@@ -74,7 +74,7 @@ const adminSignup = async(req,res)=>{
 
         await tokenCollection.save()     
         // logger.info("New user successfully created")
-        return responseHandler.handler(res,true,message.customMessages.userCreated,token,201)
+        return responseHandler.handler(res,true,message.customMessages.userCreated,PasswordToken,201)
     } catch (error) {
         console.log('error :', error);
         return responseHandler.handler(res,false, message.customMessages.error, [], 500)
@@ -174,8 +174,10 @@ const adminForgotPassword = async(req,res)=>{
 const adminResetPassword = async(req,res)=>{
     try {
         const token = req.query.token
+        console.log('token :', token);
         
         let user = await User.findOne({resetPasswordToken:token})
+        console.log('user :', user);
         
         if(!user){
             return responseHandler.handler(res,false, message.customMessages.invalidToken, [], 500)    

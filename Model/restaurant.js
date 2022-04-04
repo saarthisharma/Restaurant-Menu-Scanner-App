@@ -31,6 +31,10 @@ const restaurantSchema = new mongoose.Schema({
     activeStatus: {
         type: Number,
         required: true
+    },
+    acceptedCurrency:{
+        type: Array,
+        required: true
     }
 })
 module.exports = new mongoose.model("restaurant" , restaurantSchema)
