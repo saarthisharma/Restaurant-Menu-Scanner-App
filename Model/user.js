@@ -20,18 +20,7 @@ const userSchema = new mongoose.Schema({
     userType: {
         type: Number,
         default: 2 
-    },
-    // createdAt:{
-    //     timestamps:true
-    // }
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // updatedAt: {
-    //     type: Date,
-    //     default: Date.now
-    // },
+    }
     
 },{timestamps: true})
 module.exports = new mongoose.model("user" , userSchema)
