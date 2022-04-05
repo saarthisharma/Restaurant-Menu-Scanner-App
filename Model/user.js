@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
     userType: {
         type: Number,
         default: 2 
-    }
-    
+    }   
 },{timestamps: true})
 module.exports = new mongoose.model("user" , userSchema)
