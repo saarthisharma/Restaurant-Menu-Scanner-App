@@ -72,37 +72,32 @@ const createRestaurant = async(req,res) =>{
     }
 }
 
+const getStringTime =  (Time) =>{
+    let hours = parseInt(Time/60);
+    let minutes = Time%60
+    const time = hours+':'+minutes
+    return time;
+}
 const listRestaurant = async(req,res) => {
     try {
-        let data = await Restaurant.find({})
+        let data = await Restaurant.find({}).lean()
         
         if(!data){
             return responseHandler.handler(res,false, message.customMessages.NoDataFound, [], 500)    
         }
 
-        for(let item of data){
+        const newObj = data.map((item)=>{
             if(item && item.cuisines){
                 item.cuisines.map(function(element , index){
                     item.cuisines[index] = cuisines[element]
                 })
             }
-
-            console.log("items is :" , item)
-            console.log('openingTime :', item['openingTime']);
-            let hours = parseInt(item.openingTime/60);
-            console.log('hours :', hours);
-            let minutes = item.openingTime%60
-            console.log('minutes :', minutes);
-            const time = hours+':'+minutes
-            console.log('time :', time);
-            // const time = String(hours)+':'+String(minutes)
-            
-            item['openingTime'] = time
-        }
-
-        console.log("data:" , data)
+            item['openingTime'] =  getStringTime(item['openingTime'])
+            item['closingTime'] =  getStringTime(item['closingTime'])
+            return item;
+        })
         
-        return responseHandler.handler(res,true,message.customMessages.restaurantList , data , 201)
+        return responseHandler.handler(res,true,message.customMessages.restaurantList , newObj , 200)
         
        
     } catch (error) {
