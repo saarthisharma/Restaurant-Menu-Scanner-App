@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    // userType : 1 for admin user , 2 for other users
+    // userType : 1-admin , 2-Restaurant Owner , 3-Restaurant manager , 4-end user
     userType: {
         type: Number,
         default: 2 

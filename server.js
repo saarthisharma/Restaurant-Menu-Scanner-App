@@ -10,6 +10,8 @@ connectDB();
 app.use(express.json());
 app.use("" , require("./routes/adminRoutes"))
 app.use("" , require("./routes/restaurantRoutes"))
+app.use("" , require("./routes/restaurantManager")) 
+app.use("/manager" , require("./routes/managerAccess")) 
 app.use(express.urlencoded({ extended: true }));
 app.use(function onError(err, req, res, next) {
     res.statusCode = 500;
