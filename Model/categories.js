@@ -8,8 +8,10 @@ const categoriesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    // 1 - Available , 2 - notAvailable
     availableStatus: {
-        type: Number,
+        type: Number, 
         required: true
     }
 })

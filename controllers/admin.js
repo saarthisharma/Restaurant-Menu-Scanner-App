@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv")
-dotenv.config({path : "../.env"})
+// dotenv.config({path : "../.env"})
 const responseHandler = require("../helper/responseHandler")
 const message = require("../helper/messages")
 const User = require("../Model/user")

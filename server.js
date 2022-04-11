@@ -9,6 +9,7 @@ const connectDB = require("./config/dbConnection");
 connectDB();
 app.use(express.json());
 app.use("" , require("./routes/adminRoutes"))
+app.use("" , require("./routes/restaurantRoutes"))
 app.use(express.urlencoded({ extended: true }));
 app.use(function onError(err, req, res, next) {
     res.statusCode = 500;
