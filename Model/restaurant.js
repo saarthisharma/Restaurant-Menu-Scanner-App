@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const user = require("./user")
 const restaurantSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -8,8 +9,20 @@ const restaurantSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    countryCode: {
+        type: String,
+        required: true
+    },
     contactNumber: {
         type: Number,
+        required: true
+    },
+    countryName: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
         required: true
     },
     city: {
@@ -17,7 +30,7 @@ const restaurantSchema = new mongoose.Schema({
         required: true
     },
     cuisines: {
-        type: Number,
+        type: Array,
         required: true
     },
     openingTime: {
@@ -28,13 +41,18 @@ const restaurantSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    activeStatus: {
-        type: Number,
-        required: true
-    },
-    acceptedCurrency:{
+    acceptedCurrency: {
         type: Array,
         required: true
-    }
-})
+    },
+    createdBy: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref:'user'
+    },
+    activeStatus: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+},{timestamps: true})
 module.exports = new mongoose.model("restaurant" , restaurantSchema)
