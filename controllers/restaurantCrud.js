@@ -107,8 +107,10 @@ const listRestaurant = async(req,res) => {
 }
 
 const enableDisableRestaurant = async(req,res) =>{
+    console.log('i am here')
     try {
         let data = await Restaurant.findOne({_id:req.query.id})
+        console.log('data :', data);
         if(data.activeStatus){
             deActivationMessage = "Restaurant deactivate successfully"
             await Restaurant.updateOne({_id:req.query.id},
@@ -240,7 +242,7 @@ const listMenuCategories = async(req,res) =>{
             return responseHandler.handler(res,false, message.customMessages.NoDataFound, [], 500)    
         }
         
-        return responseHandler.handler(res,true,message.customMessages.restaurantList , data , 201)
+        return responseHandler.handler(res,true,message.customMessages.categoryProfile , data , 201)
     } catch (error) {
         console.log('error :', error);
         return responseHandler.handler(res,false, message.customMessages.error, [], 500)
