@@ -172,10 +172,8 @@ const restaurantManagerForgotPassword = async(req,res)=>{
 const restaurantManagerResetPassword = async(req,res)=>{
     try {
         const token = req.query.token
-        console.log('token :', token);
         
         let user = await User.findOne({resetPasswordToken:token})
-        console.log('user :', user);
         
         if(!user){
             return responseHandler.handler(res,false, message.customMessages.invalidToken, [], 500)    

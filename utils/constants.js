@@ -17,6 +17,12 @@ const tags = {
     2:"Non Veg"
 }
 
+const countryCode = {
+    "+91":"India",
+    "+54":"Argentina",
+    "+84":"Vietnam"
+}
 module.exports = {
-    cuisines
+    cuisines,
+    countryCode
 }

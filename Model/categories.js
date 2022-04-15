@@ -14,5 +14,5 @@ const categoriesSchema = new mongoose.Schema({
         type: Number, 
         required: true
     }
-})
+},{timestamps: true})
 module.exports = new mongoose.model("category" , categoriesSchema)

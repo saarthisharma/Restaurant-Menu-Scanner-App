@@ -7,7 +7,6 @@ const Token = require("../Model/tokens");
 const managerAuthorization = async(req,res,next)=> {
     try {
         const token = req.header("token")
-        console.log('token :', token);
 
         const secret = process.env.CRYPTO_SECRET;
         
