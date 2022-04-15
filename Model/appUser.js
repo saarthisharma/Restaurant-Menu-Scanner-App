@@ -12,16 +12,16 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required:true
+        required:false
     },
     email: {
         type: String,
-        required:true,
+        required:false,
         unique: true
     },
     countryCode: {
         type: String,
-        required: true
+        required: false
     },
 
     // userType : 4-end user

@@ -27,14 +27,14 @@ const registerViaNumber = async(req,res) =>{
         let user = await User.findOne({phoneNumber:phoneNumber})
         console.log('user :', user);
 
-        // if exist then login mechanism
+        // if phone number exist then login mechanism
         if(user){
 
-            let validation = phoneNumberValidation(req.body);
+            // let validation = phoneNumberValidation(req.body);
         
-            if(validation && validation.error == true){
-            return responseHandler.handler(res, false, validation.message , [], 422)
-            }
+            // if(validation && validation.error == true){
+            // return responseHandler.handler(res, false, validation.message , [], 422)
+            // }
             let otp = generateOTP()
 
             var date = new Date();
@@ -105,6 +105,9 @@ const verifyOtp = async(req,res) =>{
 
         if(verifyOtp.phoneOTP == phoneOTP){
             await OTP.updateOne({userId:req.query.userId},{$set:{isExpire:true}})
+
+            const deleteToken = await Token.findOne({userId:req.query.userId}).deleteOne().exec()
+            console.log('deleteToken :', deleteToken);
             const payload = {
                 userId:verifyOtp.userId
                 }
@@ -114,7 +117,8 @@ const verifyOtp = async(req,res) =>{
             let hashedToken = encryptToken(token);
                 
             let tokenCollection = new Token({
-                token : hashedToken
+                token : hashedToken,
+                userId: req.query.userId
             })
     
             await tokenCollection.save()
@@ -173,7 +177,8 @@ const resendOTP = async(req,res) =>{
                 let hashedToken = encryptToken(token);
                     
                 let tokenCollection = new Token({
-                    token : hashedToken
+                    token : hashedToken,
+                    userId: req.query.userId
                 })
         
                 await tokenCollection.save()
