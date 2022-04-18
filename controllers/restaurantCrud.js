@@ -107,10 +107,9 @@ const listRestaurant = async(req,res) => {
 }
 
 const enableDisableRestaurant = async(req,res) =>{
-    console.log('i am here')
     try {
         let data = await Restaurant.findOne({_id:req.query.id})
-        console.log('data :', data);
+    
         if(data.activeStatus){
             deActivationMessage = "Restaurant deactivate successfully"
             await Restaurant.updateOne({_id:req.query.id},
