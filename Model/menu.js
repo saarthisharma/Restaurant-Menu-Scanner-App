@@ -26,7 +26,7 @@ const menuSchema = new mongoose.Schema({
         default: 1,
         required: true
     }    
-})
+},{timestamps: true})
 
 const decimal2JSON = (v, i, prev) => {
     if (v !== null && typeof v === 'object') {

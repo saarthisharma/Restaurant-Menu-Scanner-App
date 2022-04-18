@@ -9,6 +9,6 @@ const TokenSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: "user"
     }
-})
+},{timestamps: true})
 
 module.exports = new mongoose.model("token",TokenSchema)

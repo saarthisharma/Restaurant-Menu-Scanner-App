@@ -84,7 +84,6 @@ const adminSignup = async(req,res)=>{
 const adminLogin=async(req,res)=>{
     try {
         const{email,password} = req.body
-        console.log('req.body :', req.body);
 
         // joi
         let validation = userValidation(req.body);
@@ -95,7 +94,6 @@ const adminLogin=async(req,res)=>{
 
         // checking email existence
         let user = await User.findOne({email:email})
-        console.log('user :', user);
 
         if(!user){
             return responseHandler.handler(res,false, message.customMessages.Loginerror, [], 500)

@@ -42,6 +42,11 @@ let customMessages = {
     itemOrderNoExist: 'Item order no already exist',
     menuItemNotFound: 'Menu item not found',
     cannotAddMoreItem: 'You can not add more item',
+
+    // otp
+    "alreadyExists": "phone number or email is already registered with us",
+    "otpNotFound":"OTP not Found ",
+    "otpVerified":"OTP Verified Successfully"
 }
 module.exports = {
     customMessages

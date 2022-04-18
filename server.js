@@ -13,6 +13,8 @@ app.use("" , require("./routes/restaurantRoutes"))
 app.use("" , require("./routes/restaurantManager")) 
 app.use("/manager" , require("./routes/managerAccess")) 
 app.use("/cart" , require("./routes/cartRoutes")) 
+app.use("/appUser" , require("./routes/appUserRoutes")) 
+
 app.use(express.urlencoded({ extended: true }));
 app.use(function onError(err, req, res, next) {
     res.statusCode = 500;
